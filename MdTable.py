@@ -37,4 +37,19 @@ def clip_it():
     clip.copy(gen_md_table(value))
 
 
-clip_it()
+if __name__ == '__main__':
+    # clip_it()
+
+    exp = """Id	station'id	varchar(255)
+    CityId	city'id	varchar(255)
+    StationName	name	varchar(255)"""
+    result = gen_md_table(cp=exp, sp="\n", sp_="\t", header=['name', 'description', 'type'])
+    print(result)
+
+    """output
+    |name|description|type|
+    |  ----  |  ----  |  ----  |
+    |Id|station'id|varchar(255)|
+    |CityId|city'id|varchar(255)|
+    |StationName|name|varchar(255)|
+    """

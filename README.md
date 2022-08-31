@@ -1,7 +1,7 @@
 # genMarkdownTable
-* en: data copy from sql transfer Markdown table
-* zh: 从mysql可视化工具复制的数据转化为标准的markdown表格
-
+* en: data copy from sql、excel transfer Markdown table
+* zh: 从mysql可视化工具、excel表格等复制的数据转化为标准的markdown表格
+* 或者更多的数据来源，改变函数参数即可
 ## main
 ```python
 def gen_md_table(cp: str, sp="\r\n", sp_="\t", header=None):
@@ -23,5 +23,21 @@ def gen_md_table(cp: str, sp="\r\n", sp_="\t", header=None):
             continue
         str_return += '|' + '|'.join([_ for _ in s.split("\t")]) + '|\n'
     return str_return
+```
+## example
+```python
+exp = """Id	station'id	varchar(255)
+CityId	city'id	varchar(255)
+StationName	name	varchar(255)"""
 
+result = gen_md_table(cp=exp, sp="\n", sp_="\t", header=['name', 'description', 'type'])
+print(result)
+
+"""output
+|name|description|type|
+|  ----  |  ----  |  ----  |
+|Id|station'id|varchar(255)|
+|CityId|city'id|varchar(255)|
+|StationName|name|varchar(255)|
+"""
 ```
