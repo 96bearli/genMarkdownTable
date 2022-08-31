@@ -20,11 +20,11 @@ def gen_md_table(cp: str, sp="\r\n", sp_="\t", header=None):
         header = ["字段名", "字段说明", "字段类型"]
     str_return = "|" + "|".join(header) + "|" + "\n"
     str_return += "|  ----  " * header.__len__() + "|\n"
-    sts = cp.split("\r\n")
+    sts = cp.split(sp)
     for s in sts:
         if not s:
             continue
-        str_return += '|' + '|'.join([_ for _ in s.split("\t")]) + '|\n'
+        str_return += '|' + '|'.join([_ for _ in s.split(sp_)]) + '|\n'
     return str_return
 
 
